@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(DM_UnlockedRotation.Core), "DM_UnlockedRotation", "1.0.0", "Stoney", null)]
+[assembly: MelonInfo(typeof(DM_UnlockedRotation.Core), "DM_UnlockedRotation", "1.1.0", "Stoney", null)]
 [assembly: MelonGame("infiniteloop", "DesktopMate")]
 
 // TODO: Comment, Fix Cursor Grab Point, Split into seperate files, GUI for Custom Keybinds & More Keybinds
@@ -13,15 +13,17 @@ namespace DM_UnlockedRotation
         private bool rot_Enabled = false;
         private float last_Rot_Time = 0f;
         private float rot_Delay = 0.01f;
+        private Quaternion org_Rot;
 
         private MelonPreferences_Category CharacterRotator;
+        private MelonPreferences_Entry<KeyCode> toggleRotationKey;
+        private MelonPreferences_Entry<KeyCode> resetRotationKey;
         private MelonPreferences_Entry<KeyCode> rotateLeftKey;
         private MelonPreferences_Entry<KeyCode> rotateRightKey;
         private MelonPreferences_Entry<KeyCode> rotateUpKey;
         private MelonPreferences_Entry<KeyCode> rotateDownKey;
         private MelonPreferences_Entry<KeyCode> rotatePageUpKey;
         private MelonPreferences_Entry<KeyCode> rotatePageDownKey;
-        private MelonPreferences_Entry<KeyCode> toggleRotationKey;
         private MelonPreferences_Entry<bool> debugEnabled;
 
         public override void OnInitializeMelon()
@@ -29,13 +31,14 @@ namespace DM_UnlockedRotation
             LoggerInstance.Msg("Desktop Mate Character Rotator Initialized");
 
             CharacterRotator = MelonPreferences.CreateCategory("CharacterRotator");
+            toggleRotationKey = CharacterRotator.CreateEntry("ToggleRotation", KeyCode.F8);
+            resetRotationKey = CharacterRotator.CreateEntry("ResetRotation", KeyCode.R);
             rotateLeftKey = CharacterRotator.CreateEntry("RollPositive", KeyCode.LeftArrow);
             rotateRightKey = CharacterRotator.CreateEntry("RollNegative", KeyCode.RightArrow);
             rotateUpKey = CharacterRotator.CreateEntry("PitchPositive", KeyCode.UpArrow);
             rotateDownKey = CharacterRotator.CreateEntry("PitchNegative", KeyCode.DownArrow);
             rotatePageUpKey = CharacterRotator.CreateEntry("YawPositive", KeyCode.PageUp);
             rotatePageDownKey = CharacterRotator.CreateEntry("YawNegative", KeyCode.PageDown);
-            toggleRotationKey = CharacterRotator.CreateEntry("ToggleRotation", KeyCode.F8);
             debugEnabled = CharacterRotator.CreateEntry("DebugEnabled", false);
         }
 
@@ -54,6 +57,14 @@ namespace DM_UnlockedRotation
                 MelonLogger.Msg($"[DM_UnlockedRotation] Rotation {status}.");
             }
 
+            if (rot_Enabled)
+            {
+                if (Input.GetKeyDown(resetRotationKey.Value))
+                {
+                    reset_Char_Rot();
+                }
+            }
+
             if (rot_Enabled && Time.time - last_Rot_Time >= rot_Delay)
             {
                 key_to_rot();
@@ -69,6 +80,7 @@ namespace DM_UnlockedRotation
                 if (obj.name == "CharactersRoot")
                 {
                     character = obj;
+                    org_Rot = character.transform.rotation;
                     if (debugEnabled.Value)
                     {
                         MelonLogger.Msg($"[DM_UnlockedRotation] Character found: {obj.name}");
@@ -79,6 +91,18 @@ namespace DM_UnlockedRotation
             if (debugEnabled.Value)
             {
                 MelonLogger.Warning("[DM_UnlockedRotation] No character with a 'CharactersRoot' GameObject found.");
+            }
+        }
+
+        private void reset_Char_Rot()
+        {
+            if (character != null)
+            {
+                character.transform.rotation = org_Rot;
+                if (debugEnabled.Value)
+                {
+                    MelonLogger.Msg($"[DM_UnlockedRotation] Character rotation reset!");
+                }
             }
         }
 
