@@ -1,3 +1,5 @@
+# **CURRENT DESKTOP MATE VERSION IS BROKEN, FOLLOW GUIDE MENTIONED IN COMMENTS [HERE](https://github.com/StoneyTBoI/DesktopMate-CharacterRotator/issues/1)**
+
 # Desktop Mate Character Rotator
 
 **Desktop Mate Character Rotator** is a simple Unity mod that lets you control the character's rotation in Desktop Mate.
@@ -7,7 +9,7 @@
 - **Customizable Controls**: Change the rotation keys to whatever works best for you.
 - **Toggle Rotation**: Turn rotation on or off with a quick key toggle.
 - **Debugging Mode**: Check out some rotation logs if you want to see what's going on behind the scenes.
-- **Works with Custom Characters**: Whether it's an official one or a custom mod (VRM 0.0 and 1.0 both work!), from my testing—if it loads, it rotates!
+- **Works with Custom Characters**: Whether it's an official one or a custom mod (VRM 0.0 and 1.0 both work!), from my testingâ€”if it loads, it rotates!
 
 ## Installation
 
@@ -35,7 +37,7 @@ Want to change the keys? No problem! Just go into `.\UserData\MelonPreferences` 
 
 ## License
 
-Desktop Mate Character Rotator © 2025 by Stoney is licensed under the [CC BY-NC-SA 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Desktop Mate Character Rotator Â© 2025 by Stoney is licensed under the [CC BY-NC-SA 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 You can:
 - Modify, share, and remix this project
@@ -46,10 +48,10 @@ Just make sure that if you create something based on it, you share it under the 
 ## Disclaimer
 This mod is provided as-is, with no guarantees.
 Mods can break, things might not work as expected, and I can't take responsibility if something goes sideways.
-Use at your own risk, and always keep backups—better safe than sorry!
+Use at your own risk, and always keep backupsâ€”better safe than sorry!
 
 ## TODO
-Here's a list of features I’m planning for future updates:
+Here's a list of features Iâ€™m planning for future updates:
 
 - [ ] **GUI for Custom Keybinds**: A simple interface to change keys without editing preferences manually.
 - [ ] **Fix character picking after rotation**: Sometimes it gets a little glitchy at certain angles.
@@ -64,18 +66,18 @@ Here's a list of features I’m planning for future updates:
 ## Contribution
 If you want to help out with the project, feel free to submit a **Pull Request (PR)**!
 
-Here’s how to get started:
+Hereâ€™s how to get started:
 1. Fork the repo.
 2. Create a new branch for your feature.
 3. Make your changes and commit them.
 4. Push the branch and submit your PR.
-5. I’ll review your changes and merge if everything looks good.
+5. Iâ€™ll review your changes and merge if everything looks good.
 
 ## Contact
 
-Got questions or need help? Just drop an issue on the [GitHub repository](https://github.com/StoneyTBoI/DesktopMate-CharacterRotator), and I’ll try to get back to you!
+Got questions or need help? Just drop an issue on the [GitHub repository](https://github.com/StoneyTBoI/DesktopMate-CharacterRotator), and Iâ€™ll try to get back to you!
 
 ---
 
-**Stoney** © 2025  
+**Stoney** Â© 2025  
 All rights reserved.
